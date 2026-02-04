@@ -3,6 +3,7 @@ options:
 
 steps:
   - name: 'gcr.io/cloud-builders/docker'
+    dir: 'bank-backend' 
     args:
       [
         'build',

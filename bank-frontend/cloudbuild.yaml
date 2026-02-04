@@ -28,7 +28,7 @@ steps:
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     args:
       [
-        'run', 'deploy', 'bank-frontend',
+        'run', 'deploy', 'ritesh-bank-frontend',
         '--image', 'northamerica-northeast2-docker.pkg.dev/gcp-class-14/ritesh-bank-repo/bank-frontend:latest',
         '--region', 'northamerica-northeast2',
         '--platform', 'managed',

@@ -22,7 +22,7 @@ steps:
     entrypoint: gcloud
     args:
       [
-        'run', 'deploy', 'bank-backend',
+        'run', 'deploy', 'ritesh-bank-backend',
         '--image', 'northamerica-northeast2-docker.pkg.dev/gcp-class-14/ritesh-bank-repo/bank-backend:latest',
         '--region', 'northamerica-northeast2',
         '--platform', 'managed',

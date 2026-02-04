@@ -1,6 +1,39 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<module version="4">
-  <component name="SonarLintModuleSettings">
-    <option name="uniqueId" value="6156e399-e5d4-4b0c-847b-27105a78fbad" />
-  </component>
-</module>
+options:
+  logging: CLOUD_LOGGING_ONLY  # minimal logging to satisfy org policy
+
+steps:
+  # Step 1: Build frontend container
+  - name: 'gcr.io/cloud-builders/docker'
+    dir: 'bank-frontend'   # <-- directory containing Dockerfile
+    args:
+      [
+        'build',
+        '-t',
+        'northamerica-northeast2-docker.pkg.dev/gcp-class-14/ritesh-bank-repo/bank-frontend:latest',
+        '--build-arg',
+        'REACT_APP_API_URL=https://bank-backend-524103119199.northamerica-northeast2.run.app',
+        '.'
+      ]
+
+  # Step 2: Push frontend image to Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    dir: 'bank-frontend'
+    args:
+      [
+        'push',
+        'northamerica-northeast2-docker.pkg.dev/gcp-class-14/ritesh-bank-repo/bank-frontend:latest'
+      ]
+
+  # Step 3: Deploy frontend to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    args:
+      [
+        'run', 'deploy', 'bank-frontend',
+        '--image', 'northamerica-northeast2-docker.pkg.dev/gcp-class-14/ritesh-bank-repo/bank-frontend:latest',
+        '--region', 'northamerica-northeast2',
+        '--platform', 'managed',
+        '--allow-unauthenticated'
+      ]
+
+images:
+  - 'northamerica-northeast2-docker.pkg.dev/gcp-class-14/ritesh-bank-repo/bank-frontend:latest'

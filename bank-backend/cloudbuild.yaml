@@ -1,7 +1,7 @@
-# File: bank-backend/cloudbuild.yaml
+options:
+  logging: CLOUD_LOGGING_ONLY
 
 steps:
-  # Step 1: Build backend Docker image
   - name: 'gcr.io/cloud-builders/docker'
     args:
       [
@@ -10,7 +10,6 @@ steps:
         '.'
       ]
 
-  # Step 2: Push backend image to Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
     args:
       [
@@ -18,7 +17,16 @@ steps:
         'northamerica-northeast2-docker.pkg.dev/gcp-class-14/ritesh-bank-repo/bank-backend:latest'
       ]
 
-  # Step 3: Deploy backend to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: gcloud
     args:
+      [
+        'run', 'deploy', 'bank-backend',
+        '--image', 'northamerica-northeast2-docker.pkg.dev/gcp-class-14/ritesh-bank-repo/bank-backend:latest',
+        '--region', 'northamerica-northeast2',
+        '--platform', 'managed',
+        '--allow-unauthenticated'
+      ]
+
+images:
+  - 'northamerica-northeast2-docker.pkg.dev/gcp-class-14/ritesh-bank-repo/bank-backend:latest'

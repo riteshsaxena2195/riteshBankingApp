@@ -1,0 +1,71 @@
+bank-backend/HELP.md
+bank-backend/target/
+bank-backend/.mvn/wrapper/maven-wrapper.jar
+!bank-backend/**/src/main/**/target/
+!bank-backend/**/src/test/**/target/
+
+### STS ###
+bank-backend/.apt_generated
+bank-backend/.classpath
+bank-backend/.factorypath
+bank-backend/.project
+bank-backend/.settings
+bank-backend/.springBeans
+bank-backend/.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+bank-backend//nbproject/private/
+bank-backend//nbbuild/
+bank-backend//dist/
+bank-backend//nbdist/
+bank-backend//.nb-gradle/
+build/
+!bank-backend/**/src/main/**/build/
+!bank-backend/**/src/test/**/build/
+
+### VS Code ###
+bank-backend/.vscode/
+
+### frontend ###
+
+# Logs
+bank-frontend/logs
+bank-frontend/*.log
+bank-frontend/npm-debug.log*
+bank-frontend/yarn-debug.log*
+bank-frontend/yarn-error.log*
+
+
+# Compiled binary addons (http://nodejs.org/api/addons.html)
+bank-frontend/build/Release
+
+# Dependency directories
+bank-frontend/node_modules/
+bank-frontend/jspm_packages/
+
+# Distribution directories
+bank-frontend/dist/
+
+# Typescript v1 declaration files
+bank-frontend/typings/
+
+# Optional npm cache directory
+bank-frontend/.npm
+
+# Optional eslint cache
+bank-frontend/.eslintcache
+
+# Optional REPL history
+bank-frontend/.node_repl_history
+
+# Output of 'npm pack'
+bank-frontend/*.tgz
+
+# Yarn Integrity file
+bank-frontend/.yarn-integrity

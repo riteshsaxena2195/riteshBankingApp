@@ -1,0 +1,56 @@
+:root {
+  --color-light-gray: #D0D0D0;
+  --color-gray: #A0A0A0;
+  --color-dark-gray: #303030;
+}
+
+.App {
+  text-align: center;
+  max-width: 1200px;
+}
+
+.Header {
+  position: fixed;
+  width: 100%;
+  background: var(--color-light-gray);
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  height: 50px;
+}
+
+.Header h1 {
+  margin: 0;
+}
+
+.AppContent {
+  padding-top: 50px;
+  display: flex;
+}
+
+.AccountView {
+  background: var(--color-gray);
+}
+
+.AccountList {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.header {
+  align-items: left;
+  color: white;
+  background: var(--color-dark-gray);
+  font-weight: bold;
+  border-bottom: 2px solid black;
+}
+
+.grid-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 5px;
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+  align-items: left;
+  text-align: left;
+}

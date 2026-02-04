@@ -1,10 +1,10 @@
 options:
-  logging: CLOUD_LOGGING_ONLY  # minimal logging to satisfy org policy
+  logging: CLOUD_LOGGING_ONLY
 
 steps:
-  # Step 1: Build frontend container
+  # Step 1: Build frontend image
   - name: 'gcr.io/cloud-builders/docker'
-    dir: 'bank-frontend'   # <-- directory containing Dockerfile
+    dir: 'bank-frontend'
     args:
       [
         'build',
@@ -15,7 +15,7 @@ steps:
         '.'
       ]
 
-  # Step 2: Push frontend image to Artifact Registry
+  # Step 2: Push image
   - name: 'gcr.io/cloud-builders/docker'
     dir: 'bank-frontend'
     args:
@@ -24,8 +24,9 @@ steps:
         'northamerica-northeast2-docker.pkg.dev/gcp-class-14/ritesh-bank-repo/bank-frontend:latest'
       ]
 
-  # Step 3: Deploy frontend to Cloud Run
+  # Step 3: Deploy to Cloud Run (FIXED)
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
     args:
       [
         'run', 'deploy', 'ritesh-bank-frontend',
